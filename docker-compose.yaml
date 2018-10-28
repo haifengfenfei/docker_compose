@@ -1,0 +1,46 @@
+version: "3.7"
+services:
+  redis-master:
+    image: "redis"
+    container_name: "redis-master"
+    stdin_open: true
+    ports:
+     - "6380:6379"
+    networks:
+      ownnetwork:
+       ipv4_address: "172.18.0.2" 
+    tty: true
+    privileged: true
+    command: ['bin/bash']
+  redis-slave:
+    image: "redis/slave"
+    container_name: "redis-slave"
+    stdin_open: true
+    ports:
+      - "6381:6379"   
+    networks:
+      ownnetwork:
+       ipv4_address: "172.18.0.3" 
+    tty: true
+    privileged: true
+    command: ['bin/bash']
+  redis-slave1:
+    image: "redis/slave"
+    container_name: "redis-slave1"
+    stdin_open: true
+    ports:
+      - "6382:6379"  
+    networks:
+     ownnetwork:
+      ipv4_address: "172.18.0.4"   
+    tty: true
+    privileged: true
+    command: ['bin/bash']
+networks:
+ ownnetwork:
+  driver: bridge
+  ipam:
+    driver: mytest
+    config:
+    -
+      subnet: 172.18.0.0/16
