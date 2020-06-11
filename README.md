@@ -1,6 +1,5 @@
 # 基于linux使用docker构建Redis一主两从服务器
 
-=======================================
 
 ## 安装docker
 
@@ -23,9 +22,9 @@ docker run hello-world
 ```
 docker build -t centos7:test .
 ```
-### 指令最后一个 . 是上下文路径
-### Dockerfile              构建Redis镜像文件
-### docker-compose.yaml     编排所有需要运行的容器文件
+ 指令最后一个 . 是上下文路径
+ Dockerfile              构建Redis镜像文件
+ docker-compose.yaml     编排所有需要运行的容器文件
 
 
 ## 操作指令:
